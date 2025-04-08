@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     assets: "assets",
   },
+  compressHTML: false,
   vite: {
     build: {
       assetsInlineLimit: 0,
