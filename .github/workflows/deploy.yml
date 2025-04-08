@@ -27,6 +27,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Debug build process
+        run: npm run build --verbose
+        shell: bash
       - name: Debug build output
         run: ls -R
         shell: bash
