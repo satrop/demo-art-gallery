@@ -5,4 +5,12 @@ import { defineConfig } from "astro/config";
 export default defineConfig({
   site: "https://satrop.github.io",
   base: "/demo-art-gallery",
+  build: {
+    assets: "assets",
+  },
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
+  },
 });
