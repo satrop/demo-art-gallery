@@ -1,0 +1,102 @@
+---
+interface Props {
+  variant?: "primary" | "secondary";
+  href?: string;
+  className?: string;
+}
+
+const { variant = "primary", href, className = "" } = Astro.props;
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class:list={["button", `button--${variant}`, className]}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type="button"
+      class:list={["button", `button--${variant}`, className]}
+    >
+      <slot />
+    </button>
+  )
+}
+
+<style lang="scss">
+  @use "../styles/mixins" as mix;
+  @use "../styles/global" as *;
+
+  .button {
+    --width: 57px;
+    --position: calc(-1 * (var(--width)));
+
+    display: inline-flex;
+    align-items: center;
+    padding: 1.375rem 2rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: $ff-headers;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 3.64px;
+    text-transform: uppercase;
+    transition:
+      background-color $anim,
+      border-color $anim,
+      color $anim;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: var(--width);
+      height: 24px;
+      background-image: url("../assets/icon-arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    // Primary variant (black background, white text)
+    &--primary {
+      background-color: $black;
+      border-right: solid var(--width) $gold;
+      color: white;
+
+      &::after {
+        right: var(--position);
+      }
+
+      &:hover {
+        background-color: $gold;
+        border-color: $black;
+        color: $black;
+      }
+    }
+
+    // Secondary variant (gold background, black text)
+    &--secondary {
+      justify-content: flex-start;
+      background-color: $gold;
+      border-left: solid var(--width) $black;
+      color: $black;
+
+      &::after {
+        left: var(--position);
+        transform: scaleX(-1);
+      }
+
+      &:hover {
+        background-color: $black;
+        border-color: $gold;
+        color: white;
+      }
+    }
+  }
+</style>

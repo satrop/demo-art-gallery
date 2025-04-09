@@ -1,0 +1,12 @@
+@mixin lh($font-size, $line-height-px, $font-size-base-px) {
+  font-size: $font-size;
+  line-height: calc($line-height-px / $font-size-base-px);
+}
+
+// Example usage
+// Line height divided by font size base for desktop.
+// In this example 88px is the line height and 96px is the font size base.
+//
+// .element {
+//   @include mix.lh($fs-header-xl, 88, 96); // Outputs: line-height: 0.9167;
+// }

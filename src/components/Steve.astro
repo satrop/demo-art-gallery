@@ -1,0 +1,45 @@
+---
+import Button from "../components/Button.astro";
+---
+
+<div id="container">
+  <main>
+    <div class="contain">
+      <h1>Morbi in sem placerat</h1>
+      <h2>Praesent dapibus neque id cursus</h2>
+      <h3>Phasellus ultrices nulla quis nibh</h3>
+      <h4>Nam nulla quam gravida non commodo a sodales sit</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque
+        aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
+        pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc
+        tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+      </p>
+      <p class="fs-main-sm">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque
+        aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
+        pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc
+        tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
+      </p>
+
+      <Button
+        href="/location"
+        variant="primary"
+        >Our location</Button
+      >
+
+      <Button
+        href="/"
+        variant="secondary"
+        >Back to home</Button
+      >
+    </div>
+  </main>
+</div>
+
+<style lang="scss">
+  .contain {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+</style>
