@@ -1,0 +1,56 @@
+---
+interface Props {
+  fullClass?: string;
+  containedClass?: string;
+  backgroundColor?: string;
+  backgroundImage?: string;
+}
+
+const { fullClass = "", containedClass = "", backgroundColor, backgroundImage } = Astro.props;
+
+// Build style string for the full container if background properties are provided
+let fullStyle = "";
+if (backgroundColor) {
+  fullStyle += `background-color: ${backgroundColor};`;
+}
+if (backgroundImage) {
+  fullStyle += `background-image: url(${backgroundImage});`;
+}
+---
+
+<div
+  class={`grid__full ${fullClass}`}
+  style={fullStyle}
+>
+  <div class={`grid__contained ${containedClass}`}>
+    <slot />
+  </div>
+</div>
+
+<style lang="scss">
+  @use "../styles/global" as *;
+
+  .grid {
+    &__full {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    &__contained {
+      width: 100%;
+      max-width: $max-width;
+      padding-inline: 1rem;
+
+      @media ($mq-md) {
+        padding-inline: 2rem;
+      }
+
+      @media ($mq-lg) {
+        padding-inline: 3rem;
+      }
+    }
+  }
+</style>

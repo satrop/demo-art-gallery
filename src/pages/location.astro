@@ -1,0 +1,158 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Button from "../components/Button.astro";
+
+// Import images for different screen sizes
+import mapDesktop from "../assets/desktop/image-map.png";
+import mapTablet from "../assets/tablet/image-map.png";
+import mapMobile from "../assets/mobile/image-map.png";
+---
+
+<Layout title="Modern Art Gallery | Our Location">
+  <main>
+    <section class="location">
+      <div class="location__map">
+        <picture>
+          <source
+            media="(min-width: 1110px)"
+            srcset={mapDesktop.src}
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset={mapTablet.src}
+          />
+          <img
+            src={mapMobile.src}
+            alt="Map showing our location"
+          />
+        </picture>
+      </div>
+
+      <div class="location__info">
+        <div class="location__container contained">
+          <h1>Our location</h1>
+
+          <div class="location__details">
+            <h2>99 King Street</h2>
+            <address>
+              Newport<br />
+              RI 02840<br />
+              United States
+            </address>
+
+            <p>
+              Our newly opened gallery is located near the Edward King House on 99 King Street, the
+              Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="back-to-home">
+        <Button
+          href="/demo-art-gallery/"
+          variant="secondary"
+          isLeft={true}
+          >Back to Home</Button
+        >
+      </div>
+    </section>
+  </main>
+
+  <Footer isInverted={true} />
+</Layout>
+
+<style lang="scss">
+  @use "../styles/mixins" as mix;
+  @use "../styles/global" as *;
+
+  .location {
+    &__map {
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    &__info {
+      background-color: $black;
+      color: white;
+      padding-block: 3rem;
+
+      @media ($mq-md) {
+        padding-block: 5rem;
+      }
+    }
+
+    &__container {
+      padding-inline: 2rem;
+
+      @media ($mq-md) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 4rem;
+      }
+
+      @media ($mq-lg) {
+        padding-inline: 3rem;
+        grid-template-columns: 350px 1fr;
+      }
+
+      h1 {
+        font-size: 3rem;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+
+        @media ($mq-md) {
+          font-size: 3.5rem;
+          margin-bottom: 0;
+        }
+
+        @media ($mq-lg) {
+          font-size: 4.5rem;
+        }
+      }
+    }
+
+    &__details {
+      h2 {
+        color: $gold;
+        font-size: 1.5rem;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+
+        @media ($mq-lg) {
+          font-size: 2rem;
+        }
+      }
+
+      address {
+        font-style: normal;
+        margin-bottom: 1.25rem;
+        font-size: 1.125rem;
+        line-height: 1.5;
+      }
+
+      p {
+        @include mix.lh($fs-main-sm, 28, 18);
+      }
+    }
+  }
+
+  .back-to-home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+
+    @media ($mq-md) {
+      padding: 2rem;
+    }
+  }
+</style>

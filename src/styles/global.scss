@@ -23,6 +23,41 @@ $gray: #444;
 // Animation
 $anim: 0.3s ease-in-out;
 
+$max-width: 1440px;
+
+// Breakpoints
+$bp-sm: 320px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: $max-width;
+
+// Media queries
+$mq-sm: "(min-width: #{$bp-sm})";
+$mq-md: "(min-width: #{$bp-md})";
+$mq-lg: "(min-width: #{$bp-lg})";
+$mq-xl: "(min-width: #{$bp-xl})";
+
+// Layout
+.full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contained {
+  width: 100%;
+  max-width: $bp-xl;
+  padding-inline: 1rem;
+
+  @media ($mq-md) {
+    padding-inline: 2rem;
+  }
+
+  @media ($mq-lg) {
+    padding-inline: 3rem;
+  }
+}
+
 // Global styles
 html,
 body {
