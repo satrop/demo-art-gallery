@@ -10,8 +10,8 @@ interface Props {
 const { isInverted = false } = Astro.props;
 ---
 
-<footer class={`footer full ${isInverted ? "inverted" : ""}`}>
-  <div class="footer__container contained">
+<footer class={`footer full-width ${isInverted ? "inverted" : ""}`}>
+  <div class="footer__container content">
     <div class="footer__logo">
       <img
         src={isInverted ? logoDark.src : logoLight.src}
@@ -97,18 +97,18 @@ const { isInverted = false } = Astro.props;
       padding-block: 5rem;
     }
 
+    .content {
+      grid-column: content-start / content-end;
+      width: 100%;
+    }
+
     &__container {
       display: flex;
       flex-direction: column;
       gap: 2.375rem;
-      padding-inline: 2rem;
 
       @media ($mq-md) {
         flex-direction: row;
-      }
-
-      @media ($mq-lg) {
-        padding-inline: 3rem;
       }
     }
 

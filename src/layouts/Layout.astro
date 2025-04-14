@@ -37,6 +37,9 @@ import Footer from "../components/Footer.astro";
     <title>Astro Basics</title>
   </head>
   <body>
-    <slot />
+    <main class="page-wrapper">
+      <slot />
+      <Footer />
+    </main>
   </body>
 </html>
