@@ -1,0 +1,133 @@
+---
+import Button from "../components/Button.astro";
+
+// Import images for different screen sizes
+import lg_image1 from "../assets/desktop/image-hero.jpg";
+import md_image1 from "../assets/tablet/image-hero.jpg";
+import sm_image1 from "../assets/mobile/image-hero.jpg";
+---
+
+<section class="full-width">
+  <div class="content">
+    <div class="text">
+      <h1>Modern<br /> art gallery</h1>
+      <div>
+        <p>
+          The arts in the collection of the Modern Art Gallery all started from a spark of
+          inspiration. Will these pieces inspire you? Visit us and find out.
+        </p>
+        <Button
+          href="/location.html"
+          className="align"
+          >Out location</Button
+        >
+      </div>
+    </div>
+    <picture>
+      <source
+        media="(min-width: 1110px)"
+        srcset={`${lg_image1.src} 1x, ${lg_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+      />
+      <source
+        media="(min-width: 768px)"
+        srcset={`${md_image1.src} 1x, ${md_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+      />
+      <img
+        src={sm_image1.src}
+        srcset={`${sm_image1.src} 1x, ${sm_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+        alt="Image 1"
+      />
+    </picture>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "../styles/global" as *;
+
+  section {
+    margin-bottom: clamp(6.25rem, 10vw, 11.25rem);
+  }
+
+  .content {
+    .text {
+      order: 2;
+    }
+
+    img {
+      order: 1;
+      width: calc(100% + 2rem);
+      margin-left: -1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media ($mq-md) {
+    section {
+      max-height: 700px;
+      overflow: clip;
+    }
+
+    .content {
+      align-items: center;
+
+      > * {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        width: max(340px, 50%);
+        justify-self: flex-end;
+        gap: 2rem;
+
+        p {
+          margin-block: 0 2rem;
+        }
+      }
+
+      img {
+        width: auto;
+        height: auto;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media ($mq-lg) {
+    :root {
+      --position: 285px;
+    }
+
+    section {
+      background-color: white;
+      box-shadow: inset var(--position) 0 0 black;
+    }
+
+    .content {
+      box-shadow: inset var(--position) 0 0 black;
+
+      .text {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 520px 320px;
+        justify-content: space-between;
+        margin-top: -13%;
+      }
+
+      img {
+        margin-left: var(--position);
+      }
+    }
+
+    h1 {
+      color: white;
+      mix-blend-mode: difference;
+    }
+
+    img {
+      margin-left: var(--position);
+    }
+  }
+</style>

@@ -53,13 +53,21 @@ $mq-xl: "(min-width: #{$bp-xl})";
 
   max-width: 1440px;
   margin-inline: auto;
-  padding-inline: 1rem;
 }
 
 .full-width {
   @extend %grid-layout;
 
+  padding-inline: 1rem;
   grid-column: full-start / full-end;
+
+  &.no-padding {
+    padding-inline: 0;
+
+    @media #{$mq-lg} {
+      padding-inline: 1rem;
+    }
+  }
 }
 
 .content {
@@ -74,9 +82,13 @@ body {
   width: 100%;
   height: 100%;
   font-family: $ff-main;
-  font-weight: 300;
+  font-weight: 100;
   font-optical-sizing: auto;
   font-style: normal;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 ::selection {
