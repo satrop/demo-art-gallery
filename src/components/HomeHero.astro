@@ -5,6 +5,11 @@ import Button from "../components/Button.astro";
 import lg_image1 from "../assets/desktop/image-hero.jpg";
 import md_image1 from "../assets/tablet/image-hero.jpg";
 import sm_image1 from "../assets/mobile/image-hero.jpg";
+
+// Get high-resolution versions with explicit imports to prevent path issues
+import lg_image1_2x from "../assets/desktop/image-hero@2x.jpg";
+import md_image1_2x from "../assets/tablet/image-hero@2x.jpg";
+import sm_image1_2x from "../assets/mobile/image-hero@2x.jpg";
 ---
 
 <section class="full-width">
@@ -26,15 +31,15 @@ import sm_image1 from "../assets/mobile/image-hero.jpg";
     <picture>
       <source
         media="(min-width: 1110px)"
-        srcset={`${lg_image1.src} 1x, ${lg_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+        srcset={`${lg_image1.src} 1x, ${lg_image1_2x.src} 2x`}
       />
       <source
         media="(min-width: 768px)"
-        srcset={`${md_image1.src} 1x, ${md_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+        srcset={`${md_image1.src} 1x, ${md_image1_2x.src} 2x`}
       />
       <img
         src={sm_image1.src}
-        srcset={`${sm_image1.src} 1x, ${sm_image1.src.replace(".jpg", "@2x.jpg")} 2x`}
+        srcset={`${sm_image1.src} 1x, ${sm_image1_2x.src} 2x`}
         alt="Image 1"
       />
     </picture>
