@@ -6,7 +6,7 @@ export default defineConfig({
   site: "https://satrop.github.io",
   base: "/demo-art-gallery",
   build: {
-    assets: "_astro",
+    assets: "assets",
   },
   compressHTML: false,
   vite: {
