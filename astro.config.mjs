@@ -6,7 +6,7 @@ export default defineConfig({
   site: "https://satrop.github.io",
   base: "/demo-art-gallery",
   build: {
-    assets: "_assets", // Using a prefixed name to avoid conflicts
+    // Remove the assets option to let Astro use its default path
   },
   compressHTML: false,
   vite: {
@@ -14,6 +14,7 @@ export default defineConfig({
       assetsInlineLimit: 0,
       rollupOptions: {
         output: {
+          // Handle images with custom path preservation
           assetFileNames: (assetInfo) => {
             // Preserve directory structure for image assets
             if (assetInfo.name) {
@@ -21,15 +22,18 @@ export default defineConfig({
               const extType = info[info.length - 1];
 
               if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
-                // Keep the original path structure
+                // Keep the original path structure for images
                 const path = assetInfo.name.split("/");
                 const filename = path.pop();
                 const directory = path.join("/");
 
                 return directory ? `${directory}/[name].[hash][extname]` : `[name].[hash][extname]`;
               }
+
+              // Let CSS and other assets use default path relative to base
+              return "assets/[name].[hash][extname]";
             }
-            return "_assets/[name].[hash][extname]";
+            return "assets/[name].[hash][extname]";
           },
         },
       },
