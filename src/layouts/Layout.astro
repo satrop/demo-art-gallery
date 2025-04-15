@@ -1,6 +1,13 @@
 ---
 import "../styles/global.scss";
 import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  currentPage?: string;
+}
+
+const { title = "Astro Basics", currentPage = "home" } = Astro.props;
 ---
 
 <!doctype html>
@@ -34,12 +41,12 @@ import Footer from "../components/Footer.astro";
       name="generator"
       content={Astro.generator}
     />
-    <title>Astro Basics</title>
+    <title>{title}</title>
   </head>
   <body>
-    <main class="page-wrapper">
+    <main class={`page-wrapper ${currentPage === "location" ? "page-location" : ""}`}>
       <slot />
-      <Footer />
+      <Footer currentPage={currentPage} />
     </main>
   </body>
 </html>

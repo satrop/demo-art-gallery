@@ -51,6 +51,7 @@ $mq-xl: "(min-width: #{$bp-xl})";
 .page-wrapper {
   @extend %grid-layout;
 
+  position: relative;
   max-width: 1440px;
   margin-inline: auto;
 }

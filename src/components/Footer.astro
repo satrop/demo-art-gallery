@@ -4,17 +4,17 @@ import logoLight from "../assets/logo-light.svg";
 import logoDark from "../assets/logo-dark.svg";
 
 interface Props {
-  isInverted?: boolean;
+  currentPage?: string;
 }
 
-const { isInverted = false } = Astro.props;
+const { currentPage = "home" } = Astro.props;
 ---
 
-<footer class={`footer full-width ${isInverted ? "inverted" : ""}`}>
+<footer class="footer full-width">
   <div class="footer__container content">
     <div class="footer__logo">
       <img
-        src={isInverted ? logoDark.src : logoLight.src}
+        src={currentPage === "location" ? logoDark.src : logoLight.src}
         alt="Modern Art Gallery Logo"
       />
     </div>
@@ -84,7 +84,7 @@ const { isInverted = false } = Astro.props;
     color: white;
     padding-block: 3rem;
 
-    &.inverted {
+    :global(.page-location) & {
       background-color: $gold;
       color: $black;
     }
@@ -146,7 +146,7 @@ const { isInverted = false } = Astro.props;
         transition: color $anim;
         color: white;
 
-        .footer.inverted & {
+        :global(.page-location) & {
           color: $black;
 
           &:hover {
